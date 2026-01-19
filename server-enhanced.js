@@ -61,6 +61,15 @@ const server = http.createServer((req, res) => {
     }
     
     // CALLBACK ENDPOINT
+    // Add this BEFORE the server.listen() line:
+
+// Health check endpoint (required by Render)
+if (parsed.pathname === '/health') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ status: 'ok', service: 'butter-perfect', timestamp: new Date().toISOString() }));
+    return;
+}
+
     if (parsed.pathname === '/callback') {
         const code = parsed.query.code;
         res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -85,3 +94,5 @@ server.listen(PORT, () => {
     console.log(`🔗 Test Callback: https://myserver-wk8h.onrender.com/callback?code=TEST`);
     console.log(`🔗 App ID: ${CLIENT_ID}`);
 });
+
+

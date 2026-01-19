@@ -1,11 +1,12 @@
-{
+﻿{
   "name": "butter-final",
   "version": "1.0.0",
   "main": "simple-server.js",
   "scripts": {
-    "start": "node server-clean.js"
+    "start": "node server-enhanced.js"
   },
   "engines": {
     "node": ">=18"
   }
 }
+

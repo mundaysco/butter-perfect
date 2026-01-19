@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "simple-server.js",
   "scripts": {
-    "start": "node server-enhanced.js"
+    "start": "node server-clean.js"
   },
   "engines": {
     "node": ">=18"

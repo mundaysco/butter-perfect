@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Butter Clover Dashboard</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .ready { background: #d4edda; }
+        .not-ready { background: #f8d7da; }
+    </style>
+</head>
+<body>
+    <h1>Butter Smooth Clover Integration</h1>
+    
+    <div class="status ready">
+        <h3>App Status</h3>
+        <p>✅ Ready</p>
+    </div>
+    
+    <div class="status not-ready">
+        <h3>Authorization</h3>
+        <p>Not started</p>
+    </div>
+    
+    <h2>Quick Start</h2>
+    
+    <div>
+        <h3>1. Get Authorization URL</h3>
+        <button onclick="getAuthUrl()">Get Authorization URL</button>
+        <div id="authUrl"></div>
+    </div>
+    
+    <script>
+        const API_URL = "https://myserver-wk8h.onrender.com";
+        
+        async function getAuthUrl() {
+            try {
+                const response = await fetch(`${API_URL}/auth-url`);
+                const data = await response.json();
+                document.getElementById('authUrl').innerHTML = 
+                    `<a href="${data.url}" target="_blank">${data.url}</a>`;
+            } catch (error) {
+                document.getElementById('authUrl').innerHTML = 
+                    `Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
